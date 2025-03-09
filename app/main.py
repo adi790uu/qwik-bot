@@ -24,7 +24,8 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
-
+import os
+from dotenv import load_dotenv
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -63,12 +64,10 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 def main() -> None:
-    """Start the bot."""
-    application = (
-        Application.builder()
-        .token("7686139770:AAEdqxK3BIhmu6KsMb889yvTyNGiHACdtyE")
-        .build()
-    )
+    load_dotenv()
+    token = os.environ.get("TELEGRAM_TOKEN")
+
+    application = Application.builder().token(token).build()
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
 
