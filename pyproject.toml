@@ -1,0 +1,9 @@
+[project]
+name = "qwick-bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "python-telegram-bot>=21.11.1",
+]
